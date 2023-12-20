@@ -138,8 +138,8 @@ namespace AlgoLab2
         private Random rnd = new Random();
         public CoreManager(CPU cpu, int nOfCores)
         {
-            this.coreClock = -Math.Log(rnd.NextDouble()) / Model.lambda_process;
             this.cpu = cpu;
+            this.coreClock = Model.form.currentClockSpeed;
             for (int i = 1; i <= nOfCores; i++)
             {
                 cores.Add(new Core(cpu, i, coreClock));
@@ -215,6 +215,7 @@ namespace AlgoLab2
         }
         internal void discardRequest(bool isCompleted)
         {
+            App app = appInService;
             endOfServiceTime = double.MaxValue;
             Model.form.FillColor(n, Color.Green);
             if (isCompleted)

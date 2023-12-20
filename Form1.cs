@@ -14,17 +14,33 @@ namespace AlgoLab2
     {
         public List<PictureBox> pictureBoxes = new List<PictureBox>();
         private Model model;
+        private int totalQueue = 0;
+        private Random rnd = new Random();
+        public double currentClockSpeed = 0;
+        int i = 0;
+        int curr_total = 0;
         public Form1()
         {
             InitializeComponent();
+            lb_clock_spd.Text = $"Current clock speed: {currentClockSpeed}";
         }
 
         private void bt_start_Click(object sender, EventArgs e)
         {
             ResetScene();
+            ClearData();
             timer1.Start();
             bt_start.Enabled = false;
             bt_stop.Enabled = true;
+            currentClockSpeed = -Math.Log(rnd.NextDouble()) / getLambdaProcess();
+            lb_clock_spd.Text = $"Current clock speed: {currentClockSpeed}";
+        }
+        private void ClearData()
+        {
+            chart1.Series[0].Points.Clear();
+            chart1.Series[0].Points.AddXY(0, 0);
+            i = 0;
+            curr_total = 0;
         }
 
         private void bt_stop_Click(object sender, EventArgs e)
@@ -98,6 +114,7 @@ namespace AlgoLab2
         public void UpdateQueueTotal(int mnt)
         {
             lb_queue_total.Text = $"App in queue total: " + mnt;
+            curr_total = mnt;
         }
         public void UpdateTime(double T)
         {
@@ -107,6 +124,7 @@ namespace AlgoLab2
         private void timer1_Tick(object sender, EventArgs e)
         {
             Model.Run();
+            chart1.Series[0].Points.AddXY(i++, curr_total);
         }
 
         public double getLambdaArrive()

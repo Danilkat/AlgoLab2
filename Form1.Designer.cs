@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.bt_start = new System.Windows.Forms.Button();
             this.bt_stop = new System.Windows.Forms.Button();
             this.lb_oper1 = new System.Windows.Forms.Label();
@@ -52,6 +54,8 @@
             this.lb_queue3 = new System.Windows.Forms.Label();
             this.lb_queue4 = new System.Windows.Forms.Label();
             this.lb_queue_total = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lb_clock_spd = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.np_arrive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.np_process)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_1)).BeginInit();
@@ -59,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.n_of_cores)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // bt_start
@@ -292,11 +297,38 @@
             this.lb_queue_total.TabIndex = 27;
             this.lb_queue_total.Text = "App in queue total: 0";
             // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            this.chart1.Location = new System.Drawing.Point(317, 138);
+            this.chart1.Name = "chart1";
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(471, 300);
+            this.chart1.TabIndex = 28;
+            this.chart1.Text = "chart1";
+            // 
+            // lb_clock_spd
+            // 
+            this.lb_clock_spd.AutoSize = true;
+            this.lb_clock_spd.Location = new System.Drawing.Point(30, 220);
+            this.lb_clock_spd.Name = "lb_clock_spd";
+            this.lb_clock_spd.Size = new System.Drawing.Size(114, 13);
+            this.lb_clock_spd.TabIndex = 29;
+            this.lb_clock_spd.Text = "Current clock speed: 0";
+            this.lb_clock_spd.UseMnemonic = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lb_clock_spd);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.lb_queue_total);
             this.Controls.Add(this.lb_queue4);
             this.Controls.Add(this.lb_queue3);
@@ -328,6 +360,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.n_of_cores)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -358,6 +391,8 @@
         private System.Windows.Forms.Label lb_queue3;
         private System.Windows.Forms.Label lb_queue4;
         private System.Windows.Forms.Label lb_queue_total;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Label lb_clock_spd;
     }
 }
 
