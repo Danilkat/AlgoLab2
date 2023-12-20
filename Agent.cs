@@ -87,12 +87,12 @@ namespace AlgoLab2
             return coreManager.getNextEventTime();
         }
 
-        public void NotifyFreeCore(Core freeOp)
+        public void NotifyFreeCore(Core freeCore)
         {
-            App customer = queue.getTopPriorityRequest();
-            if (customer != null)
+            App app = queue.getTopPriorityRequest();
+            if (app != null)
             {
-                freeOp.acceptRequest(customer);
+                freeCore.acceptRequest(app);
             }
         }
 
